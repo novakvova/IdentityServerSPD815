@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 async function getDoughnutsFromApi() {
-  const response = await axios.get('https://localhost:5002/doughnuts');
+  const response = await axios.get('http://localhost:5002/doughnuts');
   return response.data;
 }
 

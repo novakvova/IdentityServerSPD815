@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 
 function ProtectedRoute({ children, component: Component, ...rest }) {
   const user = useSelector(state => state.auth.user)
-
+  console.log('-----private route user--------', user);
   return user
     ? (<Route {...rest} component={Component} />)
     : (<Redirect to={'/login'} />)

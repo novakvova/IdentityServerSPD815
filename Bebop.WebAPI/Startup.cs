@@ -26,7 +26,7 @@ namespace ClientApi
                 .AddJwtBearer("Bearer", options =>
                 {
                     // identity server issuing token
-                    options.Authority = "https://localhost:5001";
+                    options.Authority = "https://identity815.tk/";//"https://localhost:5001";
                     options.RequireHttpsMetadata = false;
 
                     // allow self-signed SSL certs

@@ -13,6 +13,7 @@ import PrivateRoute from './utils/protectedRoute'
 function App() {
 
   useEffect(() => {
+    console.log("Read data user login");
     // fetch current user from cookies
     loadUserFromStorage(store)
   }, [])

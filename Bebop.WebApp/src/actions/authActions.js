@@ -8,7 +8,9 @@ import {
 import { setAuthHeader } from '../utils/axiosHeaders'
 
 export function storeUser(user) {
-  setAuthHeader(user.access_token)
+  const {access_token} =  user;
+  console.log('----------Auth token----------',access_token);
+  setAuthHeader(access_token)
   return {
     type: STORE_USER,
     payload: user

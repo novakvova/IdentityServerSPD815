@@ -2,7 +2,7 @@ import { UserManager } from 'oidc-client';
 import { storeUserError, storeUser } from '../actions/authActions'
 
 const config = {
-  authority: "https://localhost:5001",
+  authority: "https://identity815.tk/",//"https://localhost:5001",
   client_id: "wewantdoughnuts",
   redirect_uri: "http://localhost:3000/signin-oidc",
   response_type: "id_token token",
@@ -14,8 +14,13 @@ const userManager = new UserManager(config)
 
 export async function loadUserFromStorage(store) {
   try {
+    console.log("------Отримуємо дані по користувача---------");
     let user = await userManager.getUser()
-    if (!user) { return store.dispatch(storeUserError()) }
+    if (!user) { 
+      console.log("-----Користувач не залогінився-------");
+      return store.dispatch(storeUserError()) 
+    }
+    console.log('--Логінимо користувача--');
     store.dispatch(storeUser(user))
   } catch (e) {
     console.error(`User not found: ${e}`)
@@ -32,8 +37,8 @@ export function signinRedirectCallback() {
 }
 
 export function signoutRedirect() {
-  userManager.clearStaleState()
-  userManager.removeUser()
+  // userManager.clearStaleState()
+  // userManager.removeUser()
   return userManager.signoutRedirect()
 }
 
